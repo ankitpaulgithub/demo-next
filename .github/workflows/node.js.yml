@@ -27,7 +27,7 @@ jobs:
     - run: npm install --force
     - run: |
        cat <<EOT > ${{ github.workspace }}/.env
-       REACT_APP_API= <https://api.app.perso-base.com/api/>
+       REACT_APP_API= ${{ secrets.REACT_APP_API }}
        NODE_ENV=developement
        REACT_APP_SENDGRID_API_KEY="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"
        REACT_APP_CDN="<https://timerecordingtool.blob.core.windows.net/timerecordingtool/>"
