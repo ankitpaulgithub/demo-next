@@ -25,5 +25,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install --force
+    - run: |
+       cat <<EOT > ${{ github.workspace }}/.env
+       REACT_APP_API= <https://api.app.perso-base.com/api/>
+       NODE_ENV=developement
+       REACT_APP_SENDGRID_API_KEY="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"
+       REACT_APP_CDN="<https://timerecordingtool.blob.core.windows.net/timerecordingtool/>"
+       # AWS S3 Bucket Link
+       # REACT_APP_CDN="<https://techpyro-bucket.sgp1.cdn.digitaloceanspaces.com/persobase/>"
+       REACT_APP_WHISTLEBLOWING_URL=https://whistleblowing.perso-base.com
+       EOT
     - run: npm run build --if-present
     - run: pm2 restart next-app
